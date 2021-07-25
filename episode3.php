@@ -9,7 +9,7 @@ class Buku
         $tTerbit = 1980;
     public function sayHallo()
     {
-        return "Hello World!";
+        return "$this->judul , $this->pengarang";
     }
 }
 
@@ -28,5 +28,7 @@ $buku1->pengarang = "James Clear";
 $buku1->penerbit = "tidak tahu";
 
 echo "judul : $buku1->judul ,<br>Pengarang : $buku1->pengarang";
+echo "<br>";
+echo $buku1->sayHallo();
 echo "<br>";
 echo $buku1->sayHallo();
