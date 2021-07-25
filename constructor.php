@@ -42,3 +42,23 @@ echo $buku1->sayHallo();
 echo "<br>";
 $buku2 = new Buku("Rich Dad Poor Dad", "Robert T Kiyosaki", "tidak tahu");
 var_dump($buku2);
+
+class Teman
+{
+    public $nama, $alamat, $jurusan;
+
+    public function __construct($nama = "nama", $alamat = "alamat", $jurusan = "jurusan")
+    {
+        $this->nama = $nama;
+        $this->alamat = $alamat;
+        $this->jurusan = $jurusan;
+    }
+    public function getTeman()
+    {
+        return "$this->nama , $this->alamat , $this->jurusan";
+    }
+}
+
+$teman1 = new Teman("Yunita", "Desa Bendo Kecamatan Bendo", "Multimedia");
+
+var_dump($teman1);
