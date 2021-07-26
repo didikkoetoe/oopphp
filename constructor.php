@@ -1,64 +1,24 @@
 <?php
 
-// Membuat class
-class Buku
+// Constructor method
+class Produk
 {
-    public $judul = "judul",
-        $pengarang = "pengarang",
-        $penerbit = "penerbit",
-        $tTerbit = 1980;
-    public function __construct($judul = "judul", $pengarang = "pengarang", $penerbit = "penerbit", $tTerbit = 1990)
+    public $judul,
+        $penulis,
+        $penerbit,
+        $harga;
+    public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0)
     {
         $this->judul = $judul;
-        $this->pengarang = $pengarang;
+        $this->penulis = $penulis;
         $this->penerbit = $penerbit;
-        $this->$tTerbit = $tTerbit;
+        $this->harga = $harga;
     }
-    public function sayHallo()
+    public function getLabel()
     {
-        return "$this->judul , $this->pengarang";
+        return "$this->penulis , $this->penerbit";
     }
 }
 
-// Cara inisiasi class
-// $produk1 = new Buku();
-// $produk1->judul = "the 7 Habits of Highly Effective People";
-// $produk1->pengarang = "Stepehen R Covey";
-// $produk1->penerbit = "Covey Leadership Center";
-// var_dump($produk1);
-// Di atas menampilkan object dengan var_dump
-
-// Menampilkan object dengan echo
-$buku1 = new Buku();
-$buku1->judul = "Atomic Habit";
-$buku1->pengarang = "James Clear";
-$buku1->penerbit = "tidak tahu";
-
-echo "judul : $buku1->judul ,<br>Pengarang : $buku1->pengarang";
-echo "<br>";
-echo $buku1->sayHallo();
-echo "<br>";
-echo $buku1->sayHallo();
-echo "<br>";
-$buku2 = new Buku("Rich Dad Poor Dad", "Robert T Kiyosaki", "tidak tahu");
-var_dump($buku2);
-
-class Teman
-{
-    public $nama, $alamat, $jurusan;
-
-    public function __construct($nama = "nama", $alamat = "alamat", $jurusan = "jurusan")
-    {
-        $this->nama = $nama;
-        $this->alamat = $alamat;
-        $this->jurusan = $jurusan;
-    }
-    public function getTeman()
-    {
-        return "$this->nama , $this->alamat , $this->jurusan";
-    }
-}
-
-$teman1 = new Teman("Yunita", "Desa Bendo Kecamatan Bendo", "Multimedia");
-
-var_dump($teman1);
+$produk1 = new Produk("Atomic Habit", "James Clear", "Gramedia", 65000);
+echo "Judul : {$produk1->judul} | Label : {$produk1->getLabel()} | Harga : {$produk1->harga}";
