@@ -1,34 +1,40 @@
 <?php
 
+// Constructor method
 class Produk
 {
-    public $judul, $pengarang, $penerbit, $tTerbit, $harga;
-
-    public function __construct($judul = "judul", $pengarang = "pengarang", $penerbit = "penerbit", $tTerbit = "Tahun terbit", $harga = 0)
+    public $judul,
+        $penulis,
+        $penerbit,
+        $harga;
+    public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0)
     {
         $this->judul = $judul;
-        $this->pengarang = $pengarang;
+        $this->penulis = $penulis;
         $this->penerbit = $penerbit;
-        $this->tTerbit = $tTerbit;
         $this->harga = $harga;
     }
-    public function getlabel()
+    public function getLabel()
     {
-        return "$this->pengarang penerbit $this->penerbit";
+        return "$this->penulis , $this->penerbit";
     }
 }
 
-$buku1 = new Produk("Atomic Habit", "James Clear", "tidak tahu", "2018", 65000);
-echo "Judul Buku : {$buku1->judul} Label {$buku1->getlabel()}, Tahun Terbit {$buku1->tTerbit}" . PHP_EOL;
+$produk1 = new Produk("Atomic Habit", "James Clear", "Gramedia", 65000);
+$produk2 = new Produk("the 7 Habits of Highly Effective People", "Stephen R Covey", "Covey Leadership Center", 80000);
+echo "Judul : {$produk1->judul} | Label : {$produk1->getLabel()} | Harga : {$produk1->harga}";
+echo "<br>";
+echo "Judul : {$produk2->judul} | Penulis dan penerbit : {$produk2->getLabel()} | Harga : ( Rp. {$produk2->harga})";
 
-class CetakBuku
+class CetakInfoProduk
 {
-    public function cetak(Produk $buku)
+    public function cetak(Produk $produk)
     {
-        $str = "Judul Buku : {$buku->judul} | Label Buku : {$buku->getlabel()} | Tahun Terbit {$buku->tTerbit} | Harga {$buku->harga}";
+        $str = "Judul : {$produk->judul} | Penulis : {$produk->penulis} | Penerbit : {$produk->penerbit} | Harga : Rp. {$produk->harga}.";
         return $str;
     }
 }
 
-$cetakBuku1 = new CetakBuku();
-echo $cetakBuku1->cetak($buku1);
+echo "<br>";
+$cetakProduk1 = new CetakInfoProduk();
+echo $cetakProduk1->cetak($produk1);
