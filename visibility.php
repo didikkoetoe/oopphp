@@ -7,8 +7,10 @@ class Produk
 {
     public $judul,
         $penulis,
-        $penerbit,
-        $harga;
+        $penerbit;
+    protected $diskon = 0;
+
+    protected $harga;
 
     public function __construct($judul = "judul", $penulis = "penulis", $penerbit = "penerbit", $harga = 0)
     {
@@ -58,6 +60,16 @@ class Game extends GlobalProduk
         $this->waktuMain = $waktuMain;
     }
 
+    function setDiskon($diskon)
+    {
+        $this->diskon = $diskon;
+    }
+
+    public function getHarga()
+    {
+        return $this->harga - ($this->harga * $this->diskon / 100);
+    }
+
     public function getInfoProduk()
     {
         $str = "Game : {$this->judul} | " . parent::getInfoProduk() . " - {$this->waktuMain} Jam.";
@@ -70,4 +82,7 @@ $produk2 = new Game("God of War", "Cory Barlog", "Sony Computer", 100000, 55);
 echo $produk1->getInfoProduk();
 echo "<br>";
 echo $produk2->getInfoProduk();
-echo "<br>";
+echo "<hr>";
+
+$produk2->setDiskon(10);
+echo $produk2->getHarga();
